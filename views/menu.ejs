@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <h1>Menu Restoran</h1>
+    <a href="/">Kembali ke menu utama</a>
+    <form action="/menu/order" method="POST">
+      <% menu.forEach(item => { %>
+      <div>
+        <img src="<%= item.img %>" alt="<%= item.name %>" width="100" />
+        <h2><%= item.name %></h2>
+        <p>Rp. <%= item.price %></p>
+        <input type="checkbox" name="order" value="<%= item.id %>" /> Pesan
+      </div>
+      <% }) %>
+      <button type="submit">Pesan</button>
+    </form>
+  </body>
+</html>
