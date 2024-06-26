@@ -1,6 +1,10 @@
-const Order = require("../models/order");
+const OrderService = require("../models/order");
 
-exports.getOrders = (req, res) => {
-  const orders = Order.getAllOrders();
-  res.render("order", { orders });
-};
+class OrderController {
+  static getOrderPage(req, res) {
+    const orders = OrderService.getAllOrders();
+    res.render("order", { orders });
+  }
+}
+
+module.exports = OrderController;

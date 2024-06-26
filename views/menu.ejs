@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
   </head>
   <body>
-    <h1>Menu Restoran</h1>
-    <a href="/">Kembali ke menu utama</a>
-    <form action="/menu/order" method="POST">
-      <% menu.forEach(item => { %>
-      <div>
-        <img src="<%= item.img %>" alt="<%= item.name %>" width="100" />
-        <h2><%= item.name %></h2>
+    <h1>Menu</h1>
+    <a href="/" class="back-button">Back to Home</a>
+    <div id="menu">
+      <% menu.forEach(function(item) { %>
+      <div class="menu-item">
+        <img
+          src="<%= item.img %>"
+          alt="<%= item.name %>"
+          style="width: 100px; height: 100px"
+        />
+        <p><%= item.name %></p>
         <p>Rp. <%= item.price %></p>
-        <input type="checkbox" name="order" value="<%= item.id %>" /> Pesan
+        <input
+          type="checkbox"
+          id="menu-<%= item.id %>"
+          name="menu"
+          value="<%= item.id %>"
+        />
       </div>
-      <% }) %>
-      <button type="submit">Pesan</button>
-    </form>
+      <% }); %>
+    </div>
+    <button class="order-button" onclick="placeOrder()">Place Order</button>
+    <script src="/js/index.js"></script>
   </body>
 </html>

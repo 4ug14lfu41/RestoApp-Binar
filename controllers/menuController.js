@@ -1,12 +1,24 @@
-const Menu = require("../models/menu");
+const MenuService = require("../models/menu");
+const OrderService = require("../models/order");
 
-exports.getMenu = (req, res) => {
-  const menu = Menu.getAllMenu();
-  res.render("menu", { menu });
-};
+class MenuController {
+  static getMenuPage(req, res) {
+    const menu = MenuService.getAllMenu();
+    res.render("menu", { menu });
+  }
 
-exports.orderMenu = (req, res) => {
-  const order = req.body;
-  Menu.orderMenu(order);
-  res.redirect("/order");
-};
+  static orderMenu(req, res) {
+    const orders = req.body.map((order) => {
+      const item = MenuService.getMenuItemById(order.id);
+      return {
+        id: order.id,
+        name: item.name,
+        price: item.price,
+      };
+    });
+    OrderService.addOrder(orders);
+    res.status(201).send("Order placed successfully!");
+  }
+}
+
+module.exports = MenuController;

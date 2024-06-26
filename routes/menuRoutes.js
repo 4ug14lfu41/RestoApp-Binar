@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const menuController = require("../controllers/menuController");
+const MenuController = require("../controllers/menuController");
 
-router.get("/", menuController.getMenu);
-router.post("/order", menuController.orderMenu);
+router.get("/", MenuController.getMenuPage);
+router.post("/order", MenuController.orderMenu);
 
 module.exports = router;

@@ -1,15 +1,21 @@
-const menu = [
-  { id: 1, name: "Nasi Goreng", price: 20000, img: "/img/nasi-goreng.jpg" },
-  { id: 2, name: "Mie Goreng", price: 18000, img: "/img/mie-goreng.jpg" },
-  // tambahkan menu lain sesuai kebutuhan
-];
+class Menu {
+  constructor() {
+    this.menu = [
+      { id: 1, name: "Nasi Goreng", price: 20000, img: "/img/nasi-goreng.jpg" },
+      { id: 2, name: "Mie Goreng", price: 18000, img: "/img/mie-goreng.jpg" },
+      { id: 3, name: "Burger", price: 25000, img: "/img/burger.jpg" },
+      { id: 4, name: "Pizza", price: 30000, img: "/img/pizza.jpg" },
+      // add more items as needed
+    ];
+  }
 
-let orders = [];
+  getAllMenu() {
+    return this.menu;
+  }
 
-exports.getAllMenu = () => menu;
+  getMenuItemById(id) {
+    return this.menu.find((item) => item.id === id);
+  }
+}
 
-exports.orderMenu = (order) => {
-  orders.push(order);
-};
-
-exports.getAllOrders = () => orders;
+module.exports = new Menu();

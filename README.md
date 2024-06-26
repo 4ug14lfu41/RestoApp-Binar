@@ -14,6 +14,8 @@ RestoApp/
 |   |-- img/
 |       |-- nasi-goreng.jpg
 |       |-- mie-goreng.jpg
+|   |-- js/
+|       |-- index.js
 |-- routes/
 |   |-- menuRoutes.js
 |   |-- orderRoutes.js

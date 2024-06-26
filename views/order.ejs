@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Orderan</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Orders</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
   </head>
   <body>
-    <h1>Orderan yang Masuk</h1>
-    <a href="/">Kembali ke menu utama</a>
-    <ul>
-      <% orders.forEach(order => { %>
-      <li>
-        ID: <%= order.id %> - Menu: <%= order.name %> - Harga: Rp. <%=
-        order.price %>
-      </li>
-      <% }) %>
-    </ul>
+    <h1>Orders</h1>
+    <a href="/" class="back-button">Back to Home</a>
+    <div id="orders">
+      <% orders.forEach(function(order) { %>
+      <div class="order-item">
+        <p>ID: <%= order.id %></p>
+        <p>Items: <%= order.items.map(item => item.name).join(", ") %></p>
+        <p>Total Price: Rp. <%= order.totalPrice %></p>
+      </div>
+      <% }); %>
+    </div>
   </body>
 </html>
